@@ -6,16 +6,16 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="SceneController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="503.0" prefWidth="508.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Scene2Controller">
    <children>
       <ButtonBar layoutX="-22.0" layoutY="71.0" prefHeight="40.0" prefWidth="200.0" />
-      <Button layoutX="160.0" layoutY="252.0" mnemonicParsing="false" onAction="#GoalsSwitchToBudgetOption" text="Moderately focus on savings" />
-      <Button layoutX="187.0" layoutY="195.0" mnemonicParsing="false" onAction="#GoalsSwitchToBudgetOption" prefHeight="25.0" prefWidth="112.0" text="Focus on Savings" />
+      <Button layoutX="160.0" layoutY="252.0" mnemonicParsing="false" onAction="#setButton" text="Moderately focus on savings" />
+      <Button layoutX="187.0" layoutY="195.0" mnemonicParsing="false" onAction="#setButton" prefHeight="25.0" prefWidth="112.0" text="Focus on Savings" />
       <Label layoutX="91.0" layoutY="126.0" prefHeight="40.0" prefWidth="357.0" text="Pick an option that best represents your budgeting goals!" textAlignment="CENTER">
          <font>
             <Font name="Times New Roman Bold" size="12.0" />
          </font>
       </Label>
-      <Button layoutX="151.0" layoutY="307.0" mnemonicParsing="false" onAction="#GoalsSwitchToBudgetOption" prefHeight="25.0" prefWidth="187.0" text="Do not want to focus on savings" />
+      <Button layoutX="151.0" layoutY="307.0" mnemonicParsing="false" onAction="#setButton" prefHeight="25.0" prefWidth="187.0" text="Do not want to focus on savings" />
    </children>
 </AnchorPane>

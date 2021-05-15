@@ -15,11 +15,22 @@ public class App extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-    	Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
-    	primaryStage.setTitle("Budget Maker");
+    	 FXMLLoader loader = new FXMLLoader(getClass().getResource("MVC.fxml"));
+         Parent root = loader.load();
+         Scene scene = new Scene(root);
+         primaryStage.setScene(scene);
+         primaryStage.show();
+        
+      //   primaryStage.close();
+
+    	 // loader = new FXMLLoader(getClass().getResource("MVC.fxml"));
+
+         
+         
     	
-    	primaryStage.setScene(new Scene(root));
-    	primaryStage.show();
+
+    	
+    	
 
     	
 //        Button btn = new Button();
@@ -45,5 +56,8 @@ public class App extends Application {
 	 System.out.println("java version: "+System.getProperty("java.version"));
 	 System.out.println("javafx.version: " + System.getProperty("javafx.version"));
         launch(args);
+        
+        
+        
     }
 }
