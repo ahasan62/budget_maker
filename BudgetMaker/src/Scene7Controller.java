@@ -208,28 +208,33 @@ String welcome,  goal, budgetOpt,  incFrequency;
 	    colorInd[2] = good; 
 	    colorInd[3] = good;
 	    String texttoReturn = "";
-	    String careful = "Woah, you are over the ideal budget for";
+	    String careful = "Woah, you are over the ideal budget for:";
+	    boolean determine = false;
 	    if(expArr[0] > idealRentBudget) {
 	    	colorInd[0] = bad;
-	    	careful += " Rent, ";
+	    	careful += " \nRent ";
+	    	determine = true;
 	    }
 	    if(expArr[1] > idealUtilBudget) {
 	    	colorInd[1] = bad;
-	    	careful += " Utilities, ";
+	    	careful += " \nUtilities ";
+	    	determine = true;
 
 	    }
 	    if(expArr[2] > idealFoodBudget) {
 	    	colorInd[2] = bad;
-	    	careful += " Food, ";
+	    	careful += " \nFood ";
+	    	determine = true;
 
 	    }
 	    if(expArr[3] > idealMiscBudget) {
 	    	colorInd[3] = bad;
-	    	careful += "and Miscillaneous Items!";
+	    	careful += " \nMiscillaneous Items";
+	    	determine = true;
 
 	    }
 	    
-	    else {
+	    if(determine ==false) {
 	    	careful = "Great Job! You are under the ideal budget for all your expenses!";
 	    }
 	    
@@ -244,10 +249,10 @@ String welcome,  goal, budgetOpt,  incFrequency;
 	    for(Data<String,Double> data2: series2.getData()) {
 	    	Node node = data2.getNode();
 	    	if(colorInd[count].equals(good)) {
-	    		node.setStyle("-fx-bar-fill: black;");
+	    		node.setStyle("-fx-bar-fill: grey;");
 	    	} 
 	    	else {
-	    		node.setStyle("-fx-bar-fill: black;");
+	    		node.setStyle("-fx-bar-fill: grey;");
 	    	}
 	    	count++;
 	    }

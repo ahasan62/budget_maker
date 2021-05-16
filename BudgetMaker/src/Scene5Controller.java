@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 
 import com.sun.jdi.connect.spi.Connection;
 
+import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -43,14 +45,17 @@ public class Scene5Controller implements Initializable {
 	private Button btnInsert;
 	private Button btnDel;
 
-	@FXML TextField totalVal;
+	@FXML Label totalVal;
 	
 	
 	public void handleAddButton(ActionEvent event) {
-		if((tfAmount.getText() != null && tfAmount.getText().length() > 0) && (tfStream.getText() != null && tfStream.getText().length() > 0)) {
+		String value = tfAmount.getText().replaceAll("[^0-9]", "");
+
+		if((value != null && value.length() > 0) && (tfStream.getText() != null && tfStream.getText().length() > 0)) {
 		String inc = tfStream.getText();
 		double val;
-		val = Double.parseDouble(tfAmount.getText());
+		 value = tfAmount.getText().replaceAll("[^0-9]", "");
+		val = Double.parseDouble(value);
 	
 		System.out.println(inc);
 		System.out.println(val);
@@ -58,13 +63,29 @@ public class Scene5Controller implements Initializable {
 			Income.getItems().add(income);
 			tfStream.clear();
 			tfAmount.clear();
+			
+
 		}
+		double total = 0;
+		for (Income income : Income.getItems()) {
+		    total += income.getIncomeVal();
+		}
+		
+		this.totalVal.setText(Double.toString(total));
 		
 	}
 	
 	public void handleDelButton(ActionEvent event) {
 		
 		Income.getItems().removeAll(Income.getSelectionModel().getSelectedItems());
+		double total = 0;
+
+		for (Income income : Income.getItems()) {
+		    total += income.getIncomeVal();
+		}
+		
+		this.totalVal.setText(Double.toString(total));
+		
 		
 		
 	}
@@ -76,7 +97,12 @@ public class Scene5Controller implements Initializable {
 		
 		this.totalVal.setText(Double.toString(total));
 		this.income = total;
-		
+//		try {
+//		    Thread.sleep(5 * 1000);
+//		} catch (InterruptedException ie) {
+//		    Thread.currentThread().interrupt();
+//		}
+
 		 FXMLLoader loader = new FXMLLoader(getClass().getResource("expensesval.fxml"));
 	   	 Parent Scene5P = loader.load();
 	   	 Scene scene5 = new Scene(Scene5P);
@@ -86,6 +112,7 @@ public class Scene5Controller implements Initializable {
 	   	 
 	   	 Stage window5 = (Stage)((Node)event.getSource()).getScene().getWindow();
 	   	window5.setScene(scene5);
+	   	
 	   	window5.show();
 	   	
 		

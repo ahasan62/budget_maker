@@ -70,7 +70,11 @@ String welcome,  goal, budgetOpt,  incFrequency;
 		utilitiesComb.setItems(time);
 		foodComb.setItems(time);
 		miscComb.setItems(time);
-		
+		rentVal.setText("0");
+		utilitiesVal.setText("0");
+		foodVal.setText("0");
+		miscVal.setText("0");
+
 		rentComb.getSelectionModel().selectFirst();
 		utilitiesComb.getSelectionModel().selectFirst();
 		foodComb.getSelectionModel().selectFirst();
@@ -80,15 +84,21 @@ String welcome,  goal, budgetOpt,  incFrequency;
 	}
 	
 	public void goToFinal(ActionEvent event) throws IOException {
-		if((rentVal.getText() != null && rentVal.getText().length() > 0) && 
-		(utilitiesVal.getText() != null && utilitiesVal.getText().length() > 0) &&		
-		(foodVal.getText() != null && foodVal.getText().length() > 0) &&
-		(miscVal.getText() != null && miscVal.getText().length() > 0) ) {
 
-			this.rent = Double.parseDouble(rentVal.getText());
-			this.utilities = Double.parseDouble(utilitiesVal.getText());
-			this.food = Double.parseDouble(foodVal.getText());
-			this.miscellaneous = Double.parseDouble(miscVal.getText());
+		String house = rentVal.getText().replaceAll("[^0-9]", "");
+		String util = utilitiesVal.getText().replaceAll("[^0-9]", "");
+		String fo = foodVal.getText().replaceAll("[^0-9]", "");
+		String misc= miscVal.getText().replaceAll("[^0-9]", "");
+		
+		if((house != null && house.length() > 0) && 
+		(util!= null && util.length() > 0) &&		
+		(fo != null && fo.length() > 0) &&
+		(misc != null && misc.length() > 0) ) {
+
+			this.rent = Double.parseDouble(house);
+			this.utilities = Double.parseDouble(util);
+			this.food = Double.parseDouble(fo);
+			this.miscellaneous = Double.parseDouble(misc);
 		}
 		
 		

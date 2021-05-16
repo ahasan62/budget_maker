@@ -28,7 +28,9 @@ public class Scene1Controller implements Initializable {
 		this.welcomeButton = (Button)event.getSource();
 		System.out.println("We received " + welcomeButton.getText());
 		this.welcome = welcomeButton.getText();
-		
+		if(welcomeButton.getText().equals("No, not right now")) {
+			System.exit(0);
+		}
 	   	 FXMLLoader loader = new FXMLLoader(getClass().getResource("goals.fxml"));
 	   	 Parent Scene2P = loader.load();
 	   	 Scene scene2 = new Scene(Scene2P);
